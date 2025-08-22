@@ -6,25 +6,37 @@ import java.util.List;
 public class PrimeFinderThread extends Thread{
 
 	
-	int a,b;
+	private int a,b,t;
 	
-	private List<Integer> primes=new LinkedList<Integer>();
-	
-	public PrimeFinderThread(int a, int b) {
-		super();
+	private List<Integer> primes = new LinkedList<Integer>();
+	private boolean execution;
+	private Object lockObject;
+	public PrimeFinderThread(int a, int b, int t, Object lockObject) {
 		this.a = a;
 		this.b = b;
+		this.t = t;
+		this.execution = true;
+		this.lockObject = lockObject;
 	}
+
 
 	public void run(){
 		for (int i=a;i<=b;i++){						
 			if (isPrime(i)){
 				primes.add(i);
-				System.out.println(i);
+				System.out.println("Thread " + t + " found prime:" + i);
+				synchronized (lockObject){
+					if(!execution){
+						try {
+							System.out.println("Thread " + t + " is stopping");
+							lockObject.wait();
+						} catch(InterruptedException e) {
+							e.printStackTrace();
+						}
+					}
+				}
 			}
 		}
-		
-		
 	}
 	
 	boolean isPrime(int n) {
@@ -39,8 +51,9 @@ public class PrimeFinderThread extends Thread{
 	public List<Integer> getPrimes() {
 		return primes;
 	}
-	
-	
-	
-	
+
+	public void setExecution(boolean execution){
+		this.execution = execution;
+	}
+
 }
