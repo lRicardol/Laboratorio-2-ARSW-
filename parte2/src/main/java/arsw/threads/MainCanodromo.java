@@ -17,8 +17,6 @@ public class MainCanodromo {
         can = new Canodromo(17, 100);
         galgos = new Galgo[can.getNumCarriles()];
         can.setVisible(true);
-
-        // Acción del botón start
         can.setStartAction(
                 new ActionListener() {
 
@@ -32,9 +30,7 @@ public class MainCanodromo {
                         new Thread() {
                             public void run() {
                                 for (int i = 0; i < can.getNumCarriles(); i++) {
-                                    // crea los hilos 'galgos'
                                     galgos[i] = new Galgo(can.getCarril(i), "" + i, reg);
-                                    // inicia los hilos
                                     galgos[i].start();
 
                                 }
@@ -49,7 +45,6 @@ public class MainCanodromo {
                                 System.out.println("El ganador fue:" + reg.getGanador());
                             }
                         }.start();
-
                     }
                 }
         );

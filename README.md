@@ -53,6 +53,8 @@ Taller.
     
     ![Captura de pantalla 2025-08-25 163907.png](img/media/Captura%20de%20pantalla%202025-08-25%20163907.png)
 
+___
+
 2.  Una vez corregido el problema inicial, corra la aplicación varias
     veces, e identifique las inconsistencias en los resultados de las
     mismas viendo el ‘ranking’ mostrado en consola (algunas veces
@@ -60,8 +62,11 @@ Taller.
     dichas inconsistencias). A partir de esto, identifique las regiones
     críticas () del programa.
 
-    
+    ![Captura de pantalla 2025-08-25 170524.png](img/media/Captura%20de%20pantalla%202025-08-25%20170524.png)
 
+    En la clase Galgo se encuentra la region crítica más específicamente en la parte señalada en la imagen, ya que es gracias a esta parte que el programa puede mostrar inconsistencias por la concurrecia
+
+___
 3.  Utilice un mecanismo de sincronización para garantizar que a dichas
     regiones críticas sólo acceda un hilo a la vez. Verifique los
     resultados.
