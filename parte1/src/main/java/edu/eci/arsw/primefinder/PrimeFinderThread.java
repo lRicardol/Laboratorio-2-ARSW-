@@ -21,20 +21,20 @@ public class PrimeFinderThread extends Thread{
 
 
 	public void run(){
-		for (int i=a;i<=b;i++){						
+		for (int i=a;i<=b;i++){
+			synchronized (lockObject){
+				if(!execution){
+					try {
+						System.out.println("Thread " + t + " is stopping");
+						lockObject.wait();
+					} catch(InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+			}
 			if (isPrime(i)){
 				primes.add(i);
 				System.out.println("Thread " + t + " found prime:" + i);
-				synchronized (lockObject){
-					if(!execution){
-						try {
-							System.out.println("Thread " + t + " is stopping");
-							lockObject.wait();
-						} catch(InterruptedException e) {
-							e.printStackTrace();
-						}
-					}
-				}
 			}
 		}
 	}
