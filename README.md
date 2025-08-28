@@ -1,24 +1,17 @@
 Escuela Colombiana de Ingeniería
 
-Integrantes:
-
-Ricardo Ayala
-Santiago Amaya
-
 Arquitecturas de Software – ARSW
 
-####Solucion Taller – programación concurrente, condiciones de carrera y sincronización de hilos. EJERCICIO INDIVIDUAL O EN PAREJAS.
+####Taller – programación concurrente, condiciones de carrera y sincronización de hilos. EJERCICIO INDIVIDUAL O EN PAREJAS.
 
 #####Parte I – Antes de terminar la clase.
 
 Creación, puesta en marcha y coordinación de hilos.
 
 1. Revise el programa “primos concurrentes” (en la carpeta parte1), dispuesto en el paquete edu.eci.arsw.primefinder. Este es un programa que calcula los números primos entre dos intervalos, distribuyendo la búsqueda de los mismos entre hilos independientes. Por ahora, tiene un único hilo de ejecución que busca los primos entre 0 y 30.000.000. Ejecútelo, abra el administrador de procesos del sistema operativo, y verifique cuantos núcleos son usados por el mismo.
-![punto 1.png](img%2Fmedia%2Fpunto%201.png)
 
 2. Modifique el programa para que, en lugar de resolver el problema con un solo hilo, lo haga con tres, donde cada uno de éstos hará la tarcera parte del problema original. Verifique nuevamente el funcionamiento, y nuevamente revise el uso de los núcleos del equipo.
-![image.png](img%2Fmedia%2Fimage.png)
-![image 2.png](img%2Fmedia%2Fimage%202.png)
+
 3. Lo que se le ha pedido es: debe modificar la aplicación de manera que cuando hayan transcurrido 5 segundos desde que se inició la ejecución, se detengan todos los hilos y se muestre el número de primos encontrados hasta el momento. Luego, se debe esperar a que el usuario presione ENTER para reanudar la ejecución de los mismo.
 
 
@@ -50,9 +43,6 @@ Taller.
     a.  La acción de iniciar la carrera y mostrar los resultados se realiza a partir de la línea 38 de MainCanodromo.
 
     b.  Puede utilizarse el método join() de la clase Thread para sincronizar el hilo que inicia la carrera, con la finalización de los hilos de los galgos.
-    
-    ![Captura de pantalla 2025-08-25 171549.png](img/media/Captura%20de%20pantalla%202025-08-25%20171549.png)
-___
 
 2.  Una vez corregido el problema inicial, corra la aplicación varias
     veces, e identifique las inconsistencias en los resultados de las
@@ -61,11 +51,6 @@ ___
     dichas inconsistencias). A partir de esto, identifique las regiones
     críticas () del programa.
 
-    ![Captura de pantalla 2025-08-25 170524.png](img/media/Captura%20de%20pantalla%202025-08-25%20170524.png)
-
-    En la clase Galgo se encuentra la region crítica más específicamente en la parte señalada en la imagen, ya que es gracias a esta parte que el programa puede mostrar inconsistencias por la concurrecia
-
-___
 3.  Utilice un mecanismo de sincronización para garantizar que a dichas
     regiones críticas sólo acceda un hilo a la vez. Verifique los
     resultados.
