@@ -10,5 +10,9 @@
         <module name="conc-canodromo" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="conc-canodromo" target="1.7" />
+      <module name="primesearch" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
