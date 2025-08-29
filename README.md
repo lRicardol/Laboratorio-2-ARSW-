@@ -62,10 +62,12 @@ Taller.
     críticas () del programa.
 
 ![parte2_2.png](img%2Fmedia%2Fparte2_2.png)
+
 Como podemos ver en la foto, en el compilador sale que el primero en llegar fue el galgo 10, pero el mensaje que aparece como un JOptionPane, muestra que el ganador fue el galgo 3. Además de que el compilador coloca como ganador a varios hilos, lo cual es incorrecto.
 
 La región crítica encontrada fue la siguiente:
 ![parte2_2_2.png](img%2Fmedia%2Fparte2_2_2.png)
+
 Este bloque de código es una región crítica, ya que múltiples hilos acceden y modifican el objeto regl, que es compartido por todos los hilos. Acciones seguidas como leer la última posición, calcular la nueva y luego escribirla genera una condición de carrera al momento de que varios hilos accedan a ella al tiempo, haciendo que varios hilos lleguen a tener la misma posición final en la carrera generando inconsistencia en los resultados. 
 
 3.  Utilice un mecanismo de sincronización para garantizar que a dichas
@@ -73,14 +75,17 @@ Este bloque de código es una región crítica, ya que múltiples hilos acceden 
     resultados.
 
 ![parte2_3.png](img%2Fmedia%2Fparte2_3.png)
+
 Como podemos apreciar, ya hay un correcto cálculo de la posición de cada galgo. 
 
 Para solucionar este problema, lo que se hizo fue sincronizar en el método "corra" de la clase Galgo, la variable regl dentro del while, primero se agrega esta parte de código:
 ![parte2_3_2.png](img%2Fmedia%2Fparte2_3_2.png)
+
 Lo que hace ese synchronized es poner el hilo en pausa sobre el objeto regl hasta que otro hilo lo "despierte".
 
 Tambíen fue necesario usar synchronized en esta parte:
 ![parte2_3_3.png](img%2Fmedia%2Fparte2_3_3.png)
+
 Este bloque es clave porque los hilos ya no podrán acceder varios al tiempo a la variable regl ni actualizarla. Esto es lo que permite que se registren las posiciones sin duplicaciones.
 
 4.  Implemente las funcionalidades de pausa y continuar. Con estas,
@@ -95,6 +100,7 @@ Se implementaron las siguientes acciones para los botones de pausar y continuar
 
 La idea es que, mediante el siguiente método:
 ![metodoEjecucion.png](img%2Fmedia%2FmetodoEjecucion.png)
+
 Dependiendo del botón que se presione, se le cambia el estado a una variable del hilo llamada stop, la cual se hace false si se presiona el botón de pausa y true si se presiona el botón de continuar.
 
 ## Criterios de evaluación
